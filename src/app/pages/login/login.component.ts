@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment.prod';
 import { SessionService } from '../../core/services/session.service';
-import { IUser } from '../../core/models/user.model';
+import { ILogin } from '../../core/models/user.model';
 import { PassportService } from '../../core/passport/passport.service';
 import { ToastService } from '../../core/services/toast.service';
 import { RouteStateService } from '../../core/services/route-state.service';
@@ -55,21 +55,15 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.validateForm.valid) {
-      let user: IUser = await this.passportService.login(this.validateForm.controls['userName'].value, this.validateForm.controls['password'].value);
-
-      if (user) {
-        this.passportService.setUser(user);
-
+      let login: ILogin = await this.passportService.login(this.validateForm.controls['userName'].value, this.validateForm.controls['password'].value);
+     
+      if (login.user) {
+        this.passportService.setUser(login);
         const configured = await this.projectService.configurated();
-        const existenVars = await this.projectService.existsVars();
-        
-        if (configured && existenVars) {
-          const cia = await this.projectService.getCia();
-          this.passportService.setCia(cia);
-          this.routeStateService.add("system", '', null, true);
-        } else {
-          this.routeStateService.add("project", 'project/company', null, true);
-        }
+        // TODO: acá debo sacr la empresa del usuario, por lo pronto sale con PI
+        const cia = await this.projectService.getCia();        
+        this.passportService.setCia(cia);
+        this.routeStateService.add("system", '', null, true);
         return;
       }
       this.toastService.addSingle('error', 'Invalid user.');

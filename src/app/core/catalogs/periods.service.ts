@@ -19,7 +19,7 @@ export class PeriodsService {
     private toastService: ToastService
   ) { }
 
-  getPeriodos(emp: string) {
+  getPeriodos(emp: number) {
     return this.http.get(`${this.apiServe}/periodos/${emp}`).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar los periodos');
@@ -28,7 +28,7 @@ export class PeriodsService {
     }));
   }
 
-  getPeriodo(emp: string, clave: number) {
+  getPeriodo(emp: number, clave: number) {
     return this.http.get(`${this.apiServe}/periodo/${emp}/${clave}`).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar el periodo');
@@ -49,7 +49,7 @@ export class PeriodsService {
     }));
   }
 
-  deletePeriodo(emp: string, clave: string) {
+  deletePeriodo(emp: number, clave: string) {
     return this.http.delete(`${this.apiServe}/periodo/${emp}/${clave}`, this.options).pipe(map((resp) => {
       return resp;
     }));

@@ -19,7 +19,7 @@ export class AreasService {
     private toastService: ToastService
   ) { }
 
-  getAreas(emp: string) {
+  getAreas(emp: number) {
     return this.http.get(`${this.apiServe}/areas/${emp}`).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar las áreas');
@@ -28,7 +28,7 @@ export class AreasService {
     }));
   }
 
-  getArea(emp: string, clave: number) {
+  getArea(emp: number, clave: number) {
     return this.http.get(`${this.apiServe}/area/${emp}/${clave}`).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar el usuario');
@@ -37,7 +37,7 @@ export class AreasService {
     }));
   }
 
-  getAreaByPipe(emp: string, clave: number) {
+  getAreaByPipe(emp: number, clave: number) {
     return this.http.get(`${this.apiServe}/area/${emp}/${clave}`).pipe(map((res: any) => {
       if (res.data === null) {
         return 'Sin área';
@@ -58,7 +58,7 @@ export class AreasService {
     }));
   }
 
-  deleteArea(emp: string, clave: string) {
+  deleteArea(emp: number, clave: string) {
     return this.http.delete(`${this.apiServe}/area/${emp}/${clave}`, this.options).pipe(map((resp) => {
       return resp;
     }));

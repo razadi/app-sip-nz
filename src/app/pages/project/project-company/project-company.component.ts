@@ -37,11 +37,10 @@ export class ProjectCompanyComponent implements OnInit {
 
   async ngOnInit() {
     this.configured = await this.projectService.configurated();
-    this.existenVars = await this.projectService.existsVars();
 
-    if (this.configured && !this.existenVars) {
-      this.routeStateService.add("Variables", 'project/variable', null, false);
-    }
+    // if (this.configured && !this.existenVars) {
+    //   this.routeStateService.add("Variables", 'project/variable', null, false);
+    // }
   }
 
   async submitForm(value: { name: string; project: string; period: string; goal: string }) {
@@ -51,23 +50,15 @@ export class ProjectCompanyComponent implements OnInit {
     }
     if (this.frmCompany.valid) { 
       this.company = new ICompany();
-      this.company.name = value.name;
-      this.company.project = value.project;
-      this.company.period = value.period;
-      this.company.goal = value.goal;
+      this.company.emp_nom = value.name;
+      // this.company.project = value.project;
+      // this.company.period = value.period;
+      // this.company.goal = value.goal;
 
       this.companyService.newCompany(this.company).subscribe((res: any) => {
-        // creo los periodos
-        const periodos = this.projectService.creaPeriodos(res.clave, value.period, '2022-1-1');
-        // set company
-        this.company.clave = res.clave;
+        this.company.emp_id = res.clave;
         this.passportService.setCia(this.company);
-
-        if (!this.existenVars) {
-          this.routeStateService.add("Variables", 'project/variable', null, false);
-        } else {
-          this.routeStateService.add("system", '', null, true);
-        }        
+        this.routeStateService.add("system", '', null, true);
       }, (err) => {
         console.log(err);
         this.messageService.error(`Error: ${err.status} ${err.statusText}`, `${err.message}`);

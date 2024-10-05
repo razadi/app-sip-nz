@@ -10,7 +10,7 @@ import { ICompany } from '../models/company.model';
 })
 export class CompaniesService {
 
-  apiServe = `${environment.apiserver}Company`;
+  apiServe = `${environment.apiserver}/v1/cia`;
   headers = new HttpHeaders().set('content-type', 'application/json');
   options = {headers: this.headers};
 
@@ -20,7 +20,7 @@ export class CompaniesService {
   ) { }
 
   getCompanies() {
-    return this.http.get(`${this.apiServe}/empresas`).pipe(map((res: any) => {
+    return this.http.post(`${this.apiServe}/all`, {}, this.options).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar los usuarios');
       }
@@ -29,7 +29,7 @@ export class CompaniesService {
   }
 
   getCompany(clave: string) {
-    return this.http.get(`${this.apiServe}/empresa/${clave}`).pipe(map((res: any) => {
+    return this.http.post(`${this.apiServe}/current`, {id: clave}, this.options).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar el usuario');
       }

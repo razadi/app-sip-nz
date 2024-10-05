@@ -10,8 +10,7 @@ import { ICompany } from '../models/company.model';
 })
 export class ProjectService {
 
-  apiCompany = `${environment.apiserver}Company`;
-  apiVariable = `${environment.apiserver}Variable`;
+  apiCompany = `${environment.apiserver}/v1/cia`;
   headers = new HttpHeaders().set('content-type', 'application/json');
   options = {headers: this.headers};
 
@@ -21,35 +20,20 @@ export class ProjectService {
   ) { }
 
   async configurated() {
-    return await this.http.get(`${this.apiCompany}/statuscom`, this.options).pipe(map((res: any) => {
+    return await this.http.post(`${this.apiCompany}/edo`, {}, this.options).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar el estatus de la empresa');
       }      
-      return res.status;
-    })).toPromise();
-  }
-
-  async existsVars() {
-    return await this.http.get(`${this.apiVariable}/statusvar`, this.options).pipe(map((res: any) => {
-      if (res.error) {
-        this.toastService.addSingle('error', 'Error al recuperar si hay variables');
-      }      
-      return res.status;
+      return res.data;
     })).toPromise();
   }
 
   getCia(): Promise<ICompany> {
-    return this.http.get(`${environment.apiserver}Company/empresas`).pipe(map((res: any) => {
+    return this.http.post(`${this.apiCompany}/current`, {id: 2}, this.options).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar la empresa');
       }
-      return res.data[0];
-    })).toPromise();
-  }
-
-  creaPeriodos(emp, anios, inicio) {
-    return this.http.get(`${this.apiCompany}/CrearPeriodos/${emp}/${anios}/${inicio}`).pipe(map((res: any) => {
-      return res;
+      return res.data;
     })).toPromise();
   }
 

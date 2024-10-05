@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   version: '1.0.0',
-  apiserver: 'http://localhost/apisip/index.php/'
+  apiserver: 'http://localhost/apisip/index.php'
 };
 
 /*

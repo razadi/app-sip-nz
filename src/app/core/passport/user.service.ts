@@ -10,7 +10,7 @@ import { ToastService } from '../services/toast.service';
 })
 export class UserService {
   
-  apiServe = `${environment.apiserver}User`;
+  apiServe = `${environment.apiserver}/v1/user`;
   users: IUser[] = [];
   headers = new HttpHeaders().set('content-type', 'application/json');
   options = {headers: this.headers};
@@ -20,33 +20,9 @@ export class UserService {
     private toastService: ToastService
   ) { }
 
-  getUserByUserNameAndPassword(userName: string, password: string): IUser {
-    console.log(userName, password);
-    
-    let user: IUser = null;
-    if (userName === 'admin' && password === 'admin') {
-      user = {clave: '1234567890', name: 'Usuario', user: userName, pass: password, mail: 'mail@dominio.com', begin: new Date(), active: 'S', status: 'A'};
-    }
-    return user;
-  }
-
-  // getUsers() {
-  //   return this.http.get(`${this.apiServe}users`).pipe(map((res: any) => {      
-  //     if (res.error) {
-  //       this.toastService.addSingle('error', 'Error al recuperar los usuarios');
-  //       return null;
-  //     }
-
-  //     if (res.user === null) {
-  //       this.toastService.addSingle('warning', 'No existen usuarios actualmente');
-  //       return null;
-  //     }
-
-  //     return res.user;
-  //   })).toPromise();
-  // }
   getUsers() {
-    return this.http.get(`${this.apiServe}/users`).pipe(map((res: any) => {
+    let data = {};
+    return this.http.post(`${this.apiServe}/all`, data, this.options).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar los usuarios');
       }
@@ -55,7 +31,8 @@ export class UserService {
   }
 
   getUser(clave: string) {
-    return this.http.get(`${this.apiServe}/user/${clave}`).pipe(map((res: any) => {
+    let data = {cve: clave};
+    return this.http.post(`${this.apiServe}/cve`, data, this.options).pipe(map((res: any) => {
       if (res.error) {
         this.toastService.addSingle('error', 'Error al recuperar el usuario');
       }
@@ -64,25 +41,25 @@ export class UserService {
   }
 
   newUser(data: IUser) {
-    return this.http.post(`${this.apiServe}/user`, data, this.options).pipe(map((resp) => {
+    return this.http.post(`${this.apiServe}/new`, data, this.options).pipe(map((resp) => {
         return resp;
     }));
   }
 
   editUser(clave: string, data: IUser) {
-    return this.http.put(`${this.apiServe}/user/${clave}`, data, this.options).pipe(map((resp) => {
+    return this.http.put(`${this.apiServe}/upd`, {clave, data}, this.options).pipe(map((resp) => {
       return resp;
     }));
   }
 
   deleteUser(clave: string) {
-    return this.http.delete(`${this.apiServe}/user/${clave}`, this.options).pipe(map((resp) => {
+    return this.http.delete(`${this.apiServe}/del/${clave}`, this.options).pipe(map((resp) => {
       return resp;
     }));
   }
 
   activeUser(clave: string) {
-    return this.http.put(`${this.apiServe}/active/${clave}`, null, this.options).pipe(map((resp) => {
+    return this.http.put(`${this.apiServe}/active`, {clave}, this.options).pipe(map((resp) => {
       return resp;
     }));
   }

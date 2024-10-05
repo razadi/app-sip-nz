@@ -63,10 +63,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.user = usua;
     
     this.userForm = this.fb.group({
-      user: [usua ? usua.user : null, [Validators.required]],
-      pass: [usua ? usua.pass : null, [Validators.required]],
-      name: [usua ? usua.name : null, [Validators.required]],
-      mail: [usua ? usua.mail : null, [Validators.required, Validators.email]]
+      user: [usua ? usua.usu_logi : null, [Validators.required]],
+      pass: [usua ? usua.usu_pass : null, [Validators.required]],
+      name: [usua ? usua.usu_nomb : null, [Validators.required]],
+      mail: [usua ? usua.usu_mail : null, [Validators.required, Validators.email]]
     });
     usua ? this.userForm.get('user').disable() : this.userForm.get('user').enable();
   }
@@ -74,7 +74,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   userModal(usu: IUser, tplTitle: TemplateRef<{}>, tplContent: TemplateRef<{}>, tplFooter: TemplateRef<{}>): void {
     this.userFrm(usu);
     
-    this.modalTitle = usu ? `Modificar datos de ${usu.user}` : 'Crear un usuario nuevo.';
+    this.modalTitle = usu ? `Modificar datos de ${usu.usu_logi}` : 'Crear un usuario nuevo.';
     this.modal.create({
       nzTitle: tplTitle,
       nzContent: tplContent,
@@ -97,7 +97,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     }
 
     if (this.userForm.valid) {
-      if (this.user && this.user.clave ) {
+      if (this.user && this.user.usu_logi ) {
         this.editUser();
       } else {
         this.insertUser();    
@@ -122,10 +122,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   editUser() {
-    this.user.name = this.userForm.get('name').value;
-    this.user.pass = this.userForm.get('pass').value;
-    this.user.mail = this.userForm.get('mail').value;
-    this.userService.editUser(this.user.clave, this.user).subscribe((res: any) => {
+    this.user.usu_nomb = this.userForm.get('name').value;
+    this.user.usu_pass = this.userForm.get('pass').value;
+    this.user.usu_mail = this.userForm.get('mail').value;
+    this.userService.editUser(this.user.usu_logi, this.user).subscribe((res: any) => {
       if (!res.error) {
         this.toastService.success(res.msg, 2500);
         this.getUsers();

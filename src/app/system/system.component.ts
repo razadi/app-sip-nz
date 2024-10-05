@@ -4,8 +4,9 @@ import { IUser } from '../core/models/user.model';
 import { PassportService } from '../core/passport/passport.service';
 import { SessionService } from '../core/services/session.service';
 import { RouteStateService } from '../core/services/route-state.service';
-import { Router } from '@angular/router';
+import { ActivationEnd, Router } from '@angular/router';
 import { ICompany } from '../core/models/company.model';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-system',
@@ -16,49 +17,14 @@ export class SystemComponent implements OnInit {
 
   user: IUser;
   cia: ICompany;
+
   inputValue;
   isCollapsed = false;
+  label = '';
   anio = new Date().getFullYear();
-  menu = [
-    {
-      title: 'Home',
-      icon: 'home',
-      link: '/'
-    },
-    {
-      title: 'Planeación y Diseño',
-      icon: 'reconciliation',
-      child: [
-        { title: 'Variables', link: '/planning/variables' }
-      ]
-    },
-    {
-      title: 'Tablero',
-      icon: 'layout',
-      child: [
-        { title: 'Tablero', link: '/dashboard' }
-      ]
-    },
-    {
-      title: 'Sistema Vigía',
-      icon: 'profile',
-      child: [
-        { title: 'Vigía', link: '/vigilant' }
-      ]
-    },
-    {
-      title: 'Catálogos',
-      icon: 'folder',
-      child: [
-        { title: 'Generales', link: '/catalogs/grales' },
-        { title: 'Áreas de la empresa', link: '/catalogs/areas' },
-        { title: 'Periodos', link: '/catalogs/periods' },
-        { title: 'Escenarios', link: '/catalogs/stages' },
-        { title: 'Datos', link: '/catalogs/data' },
-        { title: 'Usuarios', link: '/catalogs/users' }
-      ]
-    }
-  ];
+  menus: any[] = [];
+  // varEditorModal: NzModalRef;
+  lap = 0;
 
   constructor(
     private router: Router,
@@ -68,15 +34,25 @@ export class SystemComponent implements OnInit {
     private passportService: PassportService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.user = this.passportService.user$.getValue();
     this.cia = this.passportService.cia$.getValue();
 
-    // this.userIdle.startWatching();
-    // this.userIdle.onTimerStart().subscribe();
-    // this.userIdle.onTimeout().subscribe(() => {
-    //   this.logout();
-    // });
+    this.getDataRoute().subscribe((data: any) => {
+      this.label = data.titulo;
+    });
+
+    this.menus = await this.passportService.getMenu(this.user.usu_nive, this.cia.emp_id);
+    const accesos = await this.passportService.getAcceso(this.user.usu_logi);
+    this.passportService.setAcceso(accesos);
+  }
+
+  getDataRoute() {
+    return this.router.events.pipe(
+        filter(evento => evento instanceof ActivationEnd),
+        filter((evento: ActivationEnd) => evento.snapshot.firstChild === null),
+        map((evento: ActivationEnd) => evento.snapshot.data)
+    );
   }
 
   logout() {

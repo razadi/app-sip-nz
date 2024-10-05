@@ -3,20 +3,28 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SessionService } from '../services/session.service';
-import { IUser } from '../models/user.model';
-import { HttpClient } from '@angular/common/http';
+import { ILogin, IUser } from '../models/user.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const defaultUser = null;
 const defaultCia = null;
+const defaultAcceso = null;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PassportService {
 
-  
+  apiserver = `${environment.apiserver}/v1/auth`;
+  apisersys = `${environment.apiserver}/v1/sys`;
+
+  headers = new HttpHeaders().set('content-type', 'application/json');
+  options = {headers: this.headers};
+
   user$ = new BehaviorSubject(defaultUser);
   cia$ = new BehaviorSubject(defaultCia);
+  accesos$ = new BehaviorSubject(defaultAcceso);
 
   constructor(
     private http: HttpClient,
@@ -30,10 +38,16 @@ export class PassportService {
     if (dataCia != null) {
       this.cia$.next(dataCia);
     }
+    const dataAcceso = sessionService.getItem('currentUserAccesos');
+    if (dataAcceso != null) {
+      this.accesos$.next(dataAcceso);
+    }
   }
 
-  setUser(user: any) {
+  setUser(login: any) {
+    let user: IUser = login.user;
     this.sessionService.setItem("currentUser", user);
+    this.sessionService.setItem('token', login.token);
     this.user$.next(user);
   }
 
@@ -42,10 +56,16 @@ export class PassportService {
     this.cia$.next(cia);
   }
 
-  login(userName: string, password: string): Promise<IUser> {
-    let data = {user: userName, pass: password};
-    return this.http.post(`${environment.apiserver}Auth/login`, data).pipe(map((res: any) => {
-      return res.user;
+  setAcceso(accesos: any) {
+    this.sessionService.removeItem("currentUserAccesos");
+    this.sessionService.setItem("currentUserAccesos", accesos); 
+    this.accesos$.next(accesos);
+  }
+
+  login(userName: string, password: string): Promise<ILogin> {
+    let data = {username: userName, password};
+    return this.http.post(`${this.apiserver}/login`, data, this.options).pipe(map((res: any) => {
+      return res.data;
     })).toPromise();
   }
   
@@ -54,6 +74,20 @@ export class PassportService {
       this.user$.next(defaultUser);
       this.sessionService.removeItem("currentCia");
       this.cia$.next(defaultCia);
+      this.sessionService.removeItem("token");
+  }
+
+  getMenu(niv: any, emp: number) {
+    let data = {niv, emp};
+    return this.http.post(`${this.apisersys}/mods`, data, this.options).pipe(map((res: any) => {
+      return res.data;
+    })).toPromise();
+  }
+
+  getAcceso(clave: string) {
+    return this.http.post(`${this.apiserver}/accesos`, {usu: clave}, this.options).pipe(map((res: any) => {
+      return res.data;
+    })).toPromise();
   }
 
 }

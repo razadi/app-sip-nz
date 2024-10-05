@@ -1,5 +1,5 @@
 export class IArea {
-  public emp?: string;
+  public emp?: number;
   public cve?: number;
   public name?: string;
   public owner?: string;
@@ -15,7 +15,7 @@ export class IDato {
 }
 
 export class IPeriod {
-  public emp?: string;
+  public emp?: number;
   public cve?: number;
   public period?: string;
   public begin?: string;

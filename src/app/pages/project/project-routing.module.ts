@@ -9,7 +9,6 @@ const routes: Routes = [
     component: ProjectComponent,
     children: [
       { path: 'company', loadChildren: () => import('./project-company/project-company.module').then(m => m.ProjectCompanyModule) },
-      { path: 'variable', loadChildren: () => import('./project-variables/project-variables.module').then(m => m.ProjectVariablesModule) }   
     ]
   }
 ];

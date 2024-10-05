@@ -6,23 +6,30 @@
                 <h1>SIP</h1>
             </a>
         </div>
-        <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <div *ngFor="let item of menu">
-                <li nz-menu-item *ngIf="!item.child">
-                    <i nz-icon [nzType]="item.icon"></i>
-                    <a [routerLink]="item.link">{{item.title}}</a>
+
+        <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed" style="height: 89%; overflow-y: auto; overflow-x: hidden;">
+            <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+            <ng-template #menuTpl let-menus>
+                <ng-container *ngFor="let menu of menus">
+                <li *ngIf="!menu.children" nz-menu-item [nzPaddingLeft]="menu.level * 24" [nzDisabled]="menu.disabled"
+                    [nzSelected]="menu.selected" (click)="onClickMenu(menu.id, menu.title, menu.link)">
+                    <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+                    <span *ngIf="menu.title.length <= 18">{{ menu.title }}</span>
+                    <span *ngIf="menu.title.length > 18" nz-tooltip [nzTooltipTitle]="menu.title">{{ menu.title }}</span>
                 </li>
-                <li nz-submenu [nzTitle]="item.title" [nzIcon]="item.icon" *ngIf="item.child">
+                <li *ngIf="menu.children" nz-submenu [nzPaddingLeft]="menu.level * 24" [nzOpen]="menu.open"
+                    (nzOpenChange)="openHandler(menu.title)" [nzTitle]="menu.title" [nzIcon]="menu.icon"
+                    [nzDisabled]="menu.disabled">
                     <ul>
-                        <li nz-menu-item *ngFor="let child of item.child">
-                            <a [routerLink]="child.link">{{child.title}}</a>
-                        </li>
+                    <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
                     </ul>
                 </li>
-            </div>
+                </ng-container>
+            </ng-template>
         </ul>
+
         <div style="width: 100%; text-align: center; position: absolute; bottom: 10px;">
-            <small>&copy;{{anio}} <a href="https://inteligenzza.com" target="_blank">Inteligenzza</a> by razadi</small>
+            <small>&copy;{{anio}} <a href="https://praktors.com/" target="_blank">PRAKTORS</a> by razadi</small>
         </div>
     </nz-sider>
     <nz-layout>
@@ -32,8 +39,8 @@
                   <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
                 </span>
 
-                <span class="header-title" style="cursor: pointer;" nz-popover nzPopoverTitle="{{cia.project}}" [nzPopoverContent]="ciaTemple" nzPopoverPlacement="bottomLeft" nzPopoverTrigger="click">
-                    {{cia.name}}
+                <span class="header-title" style="cursor: pointer;" nz-popover nzPopoverTitle="{{cia.emp_nom}}" [nzPopoverContent]="ciaTemple" nzPopoverPlacement="bottomLeft" nzPopoverTrigger="click">
+                    {{cia.emp_nom}}
                 </span>
 
                 <div class="header-index-right ant-select-auto-complete">
@@ -57,9 +64,9 @@
                       <i class="icon-header" nz-icon [nzType]="'bell'"></i>
                     </span> -->
 
-                    <span class="header-index-action header-index-account" nz-popover nzPopoverTitle="{{user.name}}" [nzPopoverContent]="userTemple" nzPopoverPlacement="bottomRight" nzPopoverTrigger="hover">
+                    <span class="header-index-action header-index-account" nz-popover nzPopoverTitle="{{user.usu_nomb}}" [nzPopoverContent]="userTemple" nzPopoverPlacement="bottomRight" nzPopoverTrigger="hover">
                       <span class="ant-avatar ant-avatar-circle header-index-avatar"><img src="./assets/images/sip-user.png" alt="avatar"></span>
-                    <span class="undefined anticon">{{user.user}}</span>
+                    <span class="undefined anticon">{{user.usu_logi}}</span>
                     </span>
 
                     <span class="header-index-action header-icon"></span>

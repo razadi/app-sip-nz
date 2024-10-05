@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+// import { Store } from '@ngrx/store';
 import { Observable, throwError } from 'rxjs';
 
 // import { CatchError } from '../../store/state/errors/errors.action';
@@ -25,7 +25,7 @@ export class HttpErrorsInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     // return next.handle(request);
-    if (request.url.includes(`${environment.apiserver}User`)) {
+    if (request.url.includes(`${environment.apiserver}/v1/user`)) {
       return next.handle(request).pipe(
         catchError((err: any) => {
           // this.store.dispatch(new CatchError(err.error));
