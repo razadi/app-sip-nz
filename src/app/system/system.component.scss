@@ -1,0 +1,226 @@
+// .logo {
+//     height: 32px;
+//     background: rgba(255, 255, 255, 0.2);
+//     margin: 16px;
+// }
+// nz-header {
+//     background: #fff;
+//     padding: 0;
+// }
+// nz-content {
+//     margin: 0 16px;
+// }
+// nz-breadcrumb {
+//     margin: 16px 0;
+// }
+// .inner-content {
+//     padding: 24px;
+//     background: #fff;
+//     min-height: 360px;
+// }
+// nz-footer {
+//     text-align: center;
+// }
+:host {
+    display: flex;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.app-layout {
+    height: 100vh;
+}
+
+.menu-sidebar {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+}
+
+.header-trigger {
+    height: 50px;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all .3s, padding 0s;
+}
+
+.trigger:hover {
+    color: #1379da;
+}
+
+.header-icon {
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.icon-header {
+    color: #1379da;
+}
+
+.header-title {
+    font-weight: bold;
+}
+
+.header-index-right {
+    display: flex;
+    float: right;
+    height: 48px;
+    margin-left: auto;
+    overflow: hidden
+}
+
+.header-index-right .header-index-action {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all .3s
+}
+
+.header-index-right .header-index-action>span {
+    vertical-align: middle
+}
+
+.header-index-right .header-index-action:hover {
+    background: rgba(0, 0, 0, .025)
+}
+
+.header-index-right .header-index-action.opened {
+    background: rgba(0, 0, 0, .025)
+}
+
+.header-index-right .header-index-search {
+    padding: 0 12px
+}
+
+.header-index-right .header-index-search:hover {
+    background: 0 0
+}
+
+.header-index-right .header-index-account .header-index-avatar {
+    margin: 20px 8px 20px 0;
+    color: #1890ff;
+    vertical-align: top;
+    background: hsla(0, 0%, 100%, .85)
+}
+
+.header-search-index-headerSearch .header-search-index-input {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    background: 0 0;
+    border-radius: 0;
+    transition: width .3s, margin-left .3s
+}
+
+.header-search-index-headerSearch .header-search-index-input .ant-select-selection {
+    background: 0 0
+}
+
+.header-search-index-headerSearch .header-search-index-input input {
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+    box-shadow: none!important
+}
+
+.header-search-index-headerSearch .header-search-index-input,
+.header-search-index-headerSearch .header-search-index-input:focus,
+.header-search-index-headerSearch .header-search-index-input:hover {
+    border-bottom: 1px solid #d9d9d9
+}
+
+.header-search-index-headerSearch .header-search-index-input .header-search-index-show {
+    width: 210px;
+    margin-left: 8px
+}
+
+.ant-select-auto-complete {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, .85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: "tnum", "tnum"
+}
+
+.ant-select-auto-complete .ant-select-clear {
+    right: 13px
+}
+
+// .header-avatar {
+//     float: right;
+//     padding: 0 24px 0 10px;
+// }
+// .header-right {
+//     float: right;
+//     height: 50px;
+//     font-size: 1.02rem;
+// }
+.sidebar-logo {
+    position: relative;
+    height: 64px;
+    padding-left: 24px;
+    overflow: hidden;
+    line-height: 64px;
+    // background: #001529;
+    transition: all .3s;
+    img {
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        vertical-align: middle;
+    }
+    h1 {
+        display: inline-block;
+        margin: 0 0 0 20px;
+        color: #215ec0;
+        font-weight: 600;
+        font-size: 16px;
+        font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+        vertical-align: middle;
+        margin-left: 10px !important;
+    }
+}
+
+nz-header {
+    padding: 0;
+    height: 50px;
+    width: 100%;
+    z-index: 2;
+}
+
+.ant-layout-header {
+    line-height: 50px !important;
+}
+
+.app-header {
+    position: relative;
+    height: 50px;
+    padding: 0;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+}
+
+nz-content {
+    margin: 10px;
+}
+
+.inner-content {
+    padding: 10px;
+    background: #fff;
+    height: 100%;
+}

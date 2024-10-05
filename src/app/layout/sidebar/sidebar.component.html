@@ -1,0 +1,25 @@
+<nz-sider class="menu-sidebar" nzCollapsible nzWidth="200px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzTheme]="'light'">
+    <div class="sidebar-logo">
+        <a href="">
+            <img src="./assets/images/sip.svg" alt="logo">
+            <h1>SIP</h1>
+        </a>
+    </div>
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-submenu nzTitle="Müşteri Yönetimi" nzIcon="idcard">
+            <ul>
+                <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/catalogs">Catalogos</a>
+                </li>
+
+            </ul>
+        </li>
+        <li nz-submenu nzTitle="Sistem Yönetimi" nzIcon="pic-center">
+            <ul>
+                <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/planning">planning</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nz-sider>

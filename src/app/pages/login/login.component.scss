@@ -1,0 +1,50 @@
+:host {
+    position: relative;
+    // display: block;
+    top: 0;
+    bottom: 0;
+     ::ng-deep {
+        .container {
+            display: flex;
+            min-height: 100%;
+            background: #f0f2f5;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-form {
+            width: 300px;
+        }
+        .login-form-margin {
+            margin-bottom: 16px;
+        }
+        .login-form-forgot {
+            float: right;
+        }
+        .login-form-button {
+            width: 100%;
+        }
+        .login-logo {
+            margin-bottom: 3rem;
+            img {
+                width: 100%;
+            }
+        }
+        .login-footer {
+            text-align: right;
+            margin-top: 2rem;
+            color: #7c7c7c;
+            font-size: 0.8rem;
+        }
+        .other {
+            margin-top: 24px;
+            line-height: 22px;
+            text-align: left;
+            nz-tooltip {
+                vertical-align: middle;
+            }
+            .register {
+                float: right;
+            }
+        }
+    }
+}

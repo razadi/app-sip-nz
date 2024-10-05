@@ -1,0 +1,170 @@
+<div style="display: inline-flex; align-items: center; justify-content: end;">
+    <button nz-button nzType="text" nzBlock (click)="cataModal(null, tplTitle, tplContent, tplFooter)">Crear Unidad</button>
+    <ng-template #tplTitle>
+        <span>{{modalTitle}}</span>
+    </ng-template>
+    <ng-template #tplContent let-params>
+        <form nz-form [formGroup]="dataForm">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Nombre</nz-form-label>
+                        <input type="text" nz-input formControlName="descri" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Nombre corto</nz-form-label>
+                        <input type="text" nz-input formControlName="corto" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Descripción</nz-form-label>
+                        <input type="text" nz-input formControlName="s1" />
+                    </nz-input-group>
+                </nz-form-control>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Valor</nz-form-label>
+                        <input type="number" nz-input formControlName="v1" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Descripción</nz-form-label>
+                        <input type="text" nz-input formControlName="s2" />
+                    </nz-input-group>
+                </nz-form-control>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Valor</nz-form-label>
+                        <input type="number" nz-input formControlName="v2" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Descripción</nz-form-label>
+                        <input type="text" nz-input formControlName="s3" />
+                    </nz-input-group>
+                </nz-form-control>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Valor</nz-form-label>
+                        <input type="number" nz-input formControlName="v3" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Descripción</nz-form-label>
+                        <input type="text" nz-input formControlName="s4" />
+                    </nz-input-group>
+                </nz-form-control>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Valor</nz-form-label>
+                        <input type="number" nz-input formControlName="v4" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Descripción</nz-form-label>
+                        <input type="text" nz-input formControlName="s5" />
+                    </nz-input-group>
+                </nz-form-control>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Valor</nz-form-label>
+                        <input type="number" nz-input formControlName="v5" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Descripción</nz-form-label>
+                        <input type="text" nz-input formControlName="s6" />
+                    </nz-input-group>
+                </nz-form-control>
+                <nz-form-control nzErrorTip="Ingrese el dato correcto!">
+                    <nz-input-group>
+                        <nz-form-label nzRequired>Valor</nz-form-label>
+                        <input type="number" nz-input formControlName="v6" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-template>
+    <ng-template #tplFooter let-ref="modalRef">
+        <button nz-button (click)="ref.destroy()">Cancelar</button>
+        <button nz-button nzType="primary" (click)="acceptModel(ref)" [nzLoading]="tplModalButtonLoading">Aceptar</button>
+    </ng-template>
+
+    <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" #searchText nz-input placeholder="buscar" Green (keyup)="search(searchText.value)" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+    </ng-template>
+</div>
+
+<nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" [nzNoResult]="'No hay resultados que mostrar'" [nzScroll]="{ x: '2500px'}">
+    <thead>
+        <tr>
+            <th>Cve.</th>
+            <th>Unidad</th>
+            <th>Referencia</th>
+            <th>Estado 1</th>
+            <th>Valor</th>
+            <th>Estado 2</th>
+            <th>Valor</th>
+            <th>Estado 3</th>
+            <th>Valor</th>
+            <th>Estado 4</th>
+            <th>Valor</th>
+            <th>Estado 5</th>
+            <th>Valor</th>
+            <th>Estado 6</th>
+            <th>Valor</th>
+            <th nzRight>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.clave }}</td>
+            <td>{{ data.descri }}</td>
+            <td>{{ data.corto }}</td>
+            <td>{{ data.s1 }}</td>
+            <td>{{ data.v1 }}</td>
+            <td>{{ data.s2 }}</td>
+            <td>{{ data.v2 }}</td>
+            <td>{{ data.s3 }}</td>
+            <td>{{ data.v3 }}</td>
+            <td>{{ data.s4 }}</td>
+            <td>{{ data.v4 }}</td>
+            <td>{{ data.s5 }}</td>
+            <td>{{ data.v5 }}</td>
+            <td>{{ data.s6 }}</td>
+            <td>{{ data.v6 }}</td>
+            <td nzRight>
+                <a (click)="cataModal(data, tplTitle, tplContent, tplFooter)" *ngIf="data.precargado !== '1'">Edit</a>
+                <a *ngIf="data.precargado === '1'" nz-tooltip nzTooltipTitle="No puede editar un dato precargado">Edit</a>
+                <nz-divider [nzType]="'vertical'"></nz-divider>
+                <a (click)="eliminar(data.clave, data.descri)" *ngIf="data.precargado !== '1'">Delete</a>
+                <a *ngIf="data.precargado === '1'" nz-tooltip nzTooltipTitle="No puede eliminar un dato precargado">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

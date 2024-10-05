@@ -1,0 +1,20 @@
+nz-table {
+    height: 700px !important;
+}
+
+.tool-buttons {
+    position: relative;
+    top: 0;
+    left: 15px;
+    display: inline-flex;
+    visibility: hidden;
+}
+
+// tr .tool-buttons {
+//     display: none;
+//     // visibility: visible;
+// }
+tr:hover .tool-buttons {
+    // display: inline-flex;
+    visibility: visible;
+}

@@ -1,0 +1,45 @@
+<nz-card nzType="inner" nzTitle="Información del proyecto" [nzExtra]="extraTemplate">
+    <p style="font-size:14px;color:rgba(0, 0, 0, 0.85);margin-bottom:16px;font-weight: 500;">
+        Group title
+    </p>
+    <form nz-form [formGroup]="frmCompany" (ngSubmit)="submitForm(frmCompany.value)">
+        <nz-form-item>
+            <nz-form-label [nzSpan]="9" nzRequired>Nombre de la organización</nz-form-label>
+            <nz-form-control [nzSpan]="12" nzValidatingTip="Validating...">
+                <input nz-input formControlName="name" placeholder="Nombre de la organización" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="9" nzRequired>Nombre del proyecto</nz-form-label>
+            <nz-form-control [nzSpan]="12" nzValidatingTip="Validating...">
+                <input nz-input formControlName="project" placeholder="Nombre del proyecto" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="9" nzRequired>Período de planeación</nz-form-label>
+            <nz-form-control [nzSpan]="12">
+                <input type="number" nz-input formControlName="period" placeholder="Número de periodos en años" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSpan]="9" nzRequired>Horizonte meta</nz-form-label>
+            <nz-form-control [nzSpan]="12">
+                <textarea nz-input [nzAutosize]="{ minRows: 4, maxRows: 4 }" formControlName="goal" placeholder="Escriba el horizonte meta"></textarea>
+            </nz-form-control>
+        </nz-form-item>
+
+
+        <nz-form-item>
+            <nz-form-control [nzOffset]="9" [nzSpan]="12">
+                <button nz-button nzType="primary">Guardar y avanzar</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+
+</nz-card>
+<ng-template #extraTemplate>
+    <a>More</a>
+</ng-template>

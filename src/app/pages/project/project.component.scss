@@ -1,0 +1,15 @@
+:host {
+    position: relative;
+    // display: block;
+    top: 0;
+    bottom: 0;
+     ::ng-deep {
+        .container {
+            display: flex;
+            min-height: 100%;
+            background: #f0f2f5;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
