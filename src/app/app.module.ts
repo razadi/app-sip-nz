@@ -37,7 +37,6 @@ import { HttpAuthInterceptor } from './core/interceptors/http-auth.interceptor';
     AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true},
     {provide: LOCALE_ID, useValue: 'en-US' }
-    // {provide: HTTP_INTERCEPTORS, useClass: HttpErrorsInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

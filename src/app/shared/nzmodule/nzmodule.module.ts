@@ -22,6 +22,18 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
 
 
 @NgModule({
@@ -50,7 +62,19 @@ import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
     NzToolTipModule,
     NzTabsModule,
     NzCommentModule,
-    NzTreeViewModule
+    NzTreeViewModule,
+    NzDescriptionsModule,
+    NzPaginationModule,
+    NzPageHeaderModule,
+    NzListModule,
+    NzSpinModule,
+    NzGridModule,
+    NzRadioModule,
+    NzSwitchModule,
+    NzBadgeModule,
+    NzTypographyModule,
+    NzPopconfirmModule,
+    NzProgressModule
   ]
 })
 export class NzmoduleModule { }

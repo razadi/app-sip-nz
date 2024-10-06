@@ -33,6 +33,9 @@ export class RouteStateService {
     routeState.path = path;
     routeState.data = data;
 
+    console.log(routeState);
+    
+
     routeStates.push(routeState);
     this.saveToStorage(routeStates);
     this.navigate(routeState.path);
