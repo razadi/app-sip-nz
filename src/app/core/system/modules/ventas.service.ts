@@ -39,11 +39,10 @@ export class VentasService {
     );
   }
 
-  getActividades(idVen: string, idEmp: string, today: string, pendientes: string) {
+  getActividades(idVen: string, edo: string, pendientes: string) {
     let params = new HttpParams();
     params = params.set('idv', idVen);
-    params = params.set('ide', idEmp);
-    params = params.set('today', today);
+    params = params.set('edo', edo);
     params = params.set('pendientes', pendientes);
 
     return this.http.get(`${this.apiVentas}/act`, {params}).pipe(
@@ -54,6 +53,22 @@ export class VentasService {
         return resp;
       }),
       catchError(this.handleError<any>('actividades', []))
+    );
+  }
+
+  getVenta(id: string) {
+    let params = new HttpParams();
+    params = params.set('id', id);
+
+    return this.http.get(`${this.apiVentas}/det`, {params}).pipe(
+      map((resp: any) => {
+        if (resp.error) {
+          this.toastService.addSingle('error', resp.msg);
+        }
+        
+        return resp;
+      }),
+      catchError(this.handleError<any>('venta', []))
     );
   }
 

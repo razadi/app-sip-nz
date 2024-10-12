@@ -1,0 +1,25 @@
+<div class="card-edit">
+    <nz-card [nzActions]="[actionEdit, actionEllipsis]">
+        <form nz-form [nzLayout]="'vertical'">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="null">{{title}}</nz-form-label>
+                <nz-form-control [nzSpan]="null" nzErrorTip="Please input data!">
+                    <nz-input-group nzPrefixIcon="tag">
+                        <input type="text" [(ngModel)]="campo.name" name="nombre" nz-input [placeholder]="placeHolder" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </nz-card>
+
+    <ng-template #actionEdit>
+        <div (click)="close()">
+            <i nz-icon nzType="close"></i> Cancelar
+        </div>
+    </ng-template>
+    <ng-template #actionEllipsis>
+        <div (click)="saveItem()">
+            <i nz-icon nzType="check"></i> Aceptar
+        </div>
+    </ng-template>
+</div>

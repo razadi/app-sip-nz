@@ -43,7 +43,8 @@ import {
   NodeIndexOutline,
   TagOutline,
   SelectOutline,
-  BorderOuterOutline
+  BorderOuterOutline,
+  SnippetsOutline
 } from '@ant-design/icons-angular/icons';
 import { en_US, es_ES, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { ok } from 'assert';

@@ -26,14 +26,12 @@ export class AccesosResolver implements Resolve<any[]> {
     this.acceso = this.passportService.accesos$.getValue();
 
     const accesoTmp = this.acceso.filter((acces: IAccesos) => acces.link === state.url);
-    // console.log(accesoTmp[0]);
 
     let crud: string[] = ['1', '1', '1', '1'];
     
     if (this.user.usu_nive === '2' || this.user.usu_nive === '3') {
       crud = accesoTmp && accesoTmp.length > 0 ? accesoTmp[0].crud.split('') : ['0', '1', '0', '0'];
     }
-    console.log(crud);
     
     return of(crud);
   }

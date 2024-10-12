@@ -1,0 +1,350 @@
+<div class="var-top">
+  <app-btns-mov [toolTip]="tooltips" [link]="links" [visible]="visibles"></app-btns-mov>
+
+  <div class="btns">
+    <h3>Detalle de la estrategia de venta</h3>
+  </div>
+
+  <!-- <div class="btn-opt">
+    <button nz-button nzType="primary" [nzSize]="'small'" nzGhost><i nz-icon [nzType]="'si:select'"
+        style="font-size: 1.05rem; color: #1db91d;"></i> Metas</button>
+  </div> -->
+</div>
+
+<div>
+  <div nz-row [nzGutter]="[8, 8]">
+    <div nz-col class="gutter-row1" [nzSpan]="12" style="height: 80vh; overflow: auto;">
+
+      <div class="vdetail-group vdetail-group-negocia">
+        <div class="vdetail-group-title vdetail-group-title-85">Negociación</div>
+        <div nz-row>
+          <div nz-col [nzSpan]="22">
+            <div class="vdetail-texto text-marged" style="margin-top: 5px; font-weight: bold;" *ngIf="estrategia">
+              {{estrategia.est_name}}</div>
+            <div class="vdetail-caption">Meta</div>
+            <div class="vdetail-texto memo" *ngIf="estrategia">{{estrategia.est_meta}}</div>
+          </div>
+          <div nz-col [nzSpan]="2">
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Editar"><span nz-icon
+                  nzType="edit" style="color: #36788a;"></span></button>
+              <div class="vdetail-divide"></div>
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Consultar"><span nz-icon
+                  nzType="eye" style="color: #392d77;"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vdetail-group vdetail-group-cliente">
+        <div class="vdetail-group-title vdetail-group-title-50">Cliente</div>
+        <div nz-row>
+          <div nz-col [nzSpan]="22">
+            <div class="vdetail-texto" *ngIf="cliente">{{cliente.cli_raso}}</div>
+            <div class="vdetail-caption">Contacto</div>
+            <div class="vdetail-texto text-marged" *ngIf="cliente">{{cliente.cli_cont}}</div>
+            <div nz-row [nzGutter]="[8, 8]">
+              <div nz-col [nzSpan]="12">
+                <div class="vdetail-caption">Tel. Móvil</div>
+                <div class="vdetail-texto" *ngIf="cliente">{{cliente.cli_movi}}</div>
+              </div>
+              <div nz-col [nzSpan]="12">
+                <div class="vdetail-caption">Correo elec.</div>
+                <div class="vdetail-texto text-marged" style="text-transform: lowercase;" *ngIf="cliente">
+                  {{cliente.cli_mail}}</div>
+              </div>
+            </div>
+            <div class="vdetail-caption">Domicilio</div>
+            <div class="vdetail-texto text-marged" *ngIf="cliente">{{cliente.cli_domi}}</div>
+          </div>
+          <div nz-col [nzSpan]="2">
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Editar"><span nz-icon
+                  nzType="edit" style="color: #36788a;"></span></button>
+              <div class="vdetail-divide"></div>
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Consultar"><span nz-icon
+                  nzType="eye" style="color: #392d77;"></span></button>
+              <div class="vdetail-divide"></div>
+              <button nz-button nzType="default" nzSize="small" nz-tooltip
+                nzTooltipTitle="Ir al sitio del cliente"><span nz-icon nzType="global"
+                  style="color: #8f8020;"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vdetail-group vdetail-group-info">
+        <div class="vdetail-group-title vdetail-group-title-85">Información</div>
+        <div nz-row>
+          <div nz-col [nzSpan]="22">
+            <div class="vdetail-caption">Información y/o estrategia</div>
+            <div class="vdetail-texto memo-2" *ngIf="estseguir">{{estseguir.ese_meta}}</div>
+          </div>
+          <div nz-col [nzSpan]="2">
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Agregar información"><span
+                  nz-icon nzType="plus" style="color: #368236;"></span></button>
+              <div class="vdetail-divide"></div>
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Editar información"><span
+                  nz-icon nzType="edit" style="color: #36788a;"></span></button>
+              <div class="vdetail-divide"></div>
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Consultar información"><span
+                  nz-icon nzType="eye" style="color: #392d77;"></span></button>
+              <div class="vdetail-divide"></div>
+              <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Consultar histórico"><span
+                  nz-icon nzType="file" style="color: #803a80;"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vdetail-group vdetail-group-vende">
+        <div class="vdetail-group-title vdetail-group-title-85">Responsable</div>
+        <div nz-row>
+          <div nz-col [nzSpan]="22">
+            <div class="vdetail-texto" *ngIf="vendedor">{{vendedor.ved_raso}}</div>
+          </div>
+          <div nz-col [nzSpan]="2">
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <button nz-button nzSize="small" nz-dropdown [nzDropdownMenu]="menu" nzTooltipPlacement="bottomLeft"><i
+                  nz-icon nzType="ellipsis"></i></button>
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item>
+                    <a style="color: #20681e;"><span nz-icon [nzType]="'si:matriz'"></span> Reasignar</a>
+                  </li>
+                  <li nz-menu-item>
+                    <a style="color: #36788a;"><span nz-icon nzType="edit"></span> Modificar</a>
+                  </li>
+                  <li nz-menu-item>
+                    <a style="color: #392d77;"><span nz-icon nzType="eye"></span> Consultar</a>
+                  </li>
+                </ul>
+              </nz-dropdown-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div nz-col class="gutter-row1" [nzSpan]="12">
+
+      <nz-card nzType="inner" nzSize="small" nzTitle="Actividades" [nzExtra]="tmpTopCard">
+        <nz-card-tab>
+          <nz-tabset nzSize="small" [(nzSelectedIndex)]="indexTab">
+            <nz-tab nzTitle="Pendientes"></nz-tab>
+            <nz-tab nzTitle="Realizadas"></nz-tab>
+            <nz-tab nzTitle="Histórico"></nz-tab>
+          </nz-tabset>
+        </nz-card-tab>
+        <!-- *** -->
+        <ng-container>
+          <div class="cat-table">
+            <nz-table #basicTable [nzSize]="'small'"
+              [nzData]="indexTab==0 ? activitiesPen : indexTab==1 ? activitiesRel : activitiesAll"
+              [nzNoResult]="'No hay resultados que mostrar'"
+              [nzLoading]="indexTab==0 ? activitiesPen.length===0 : indexTab==1 ? activitiesRel.length===0 : activitiesAll.length===0"
+              [nzScroll]="{y: '70vh'}" [nzFrontPagination]="'false'" [nzShowPagination]="'false'">
+              <thead>
+                <tr>
+                  <th nzWidth="20px">Titulo</th>
+                  <th nzWidth="95px">Descripción</th>
+                  <th nzWidth="40px">Fecha</th>
+                  <th nzWidth="5px"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let data of basicTable.data">
+                  <tr class="vdetail-table" [ngClass]="{'pendiente-act': data.ess_tipo=='ACTI' && data.ess_esta=='P', 
+                                                        'cancelada-act': data.ess_tipo=='ACTI' && data.ess_esta=='C', 
+                                                        'terminado-act': data.ess_tipo=='ACTI' && data.ess_esta=='T', 
+                                                        'posponer-act': data.ess_tipo=='ACTI' && data.ess_esta=='S', 
+                                                        'perdido-act': data.ess_tipo=='ACTI' && data.ess_esta=='D',
+                                                        'pendiente-com': data.ess_tipo=='COME' && data.ess_esta=='P', 
+                                                        'cancelada-com': data.ess_tipo=='COME' && data.ess_esta=='C', 
+                                                        'terminado-com': data.ess_tipo=='COME' && data.ess_esta=='T', 
+                                                        'posponer-com': data.ess_tipo=='COME' && data.ess_esta=='S', 
+                                                        'perdido-com': data.ess_tipo=='COME' && data.ess_esta=='D',                                                      
+                                                        'pendiente-tar': data.ess_tipo=='TARE' && data.ess_esta=='P', 
+                                                        'cancelada-tar': data.ess_tipo=='TARE' && data.ess_esta=='C', 
+                                                        'terminado-tar': data.ess_tipo=='TARE' && data.ess_esta=='T', 
+                                                        'posponer-tar': data.ess_tipo=='TARE' && data.ess_esta=='S', 
+                                                        'perdido-tar': data.ess_tipo=='TARE' && data.ess_esta=='D'}">
+                    <td [nzEllipsis] nz-tooltip [nzTooltipTitle]="data.ess_titu">{{ data.ess_titu }}</td>
+                    <td>{{ data.ess_desc }}</td>
+                    <td nz-tooltip [nzTooltipTitle]="data.aviso">{{ data.fecha }}</td>
+                    <td>
+                      <div class="tool-buttons">
+                        <button *ngIf="data.ess_tipo!='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                          nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Terminar"><span nz-icon
+                            [nzType]="'si:periods'" style="color: #579336;"></span></button>
+                        <button *ngIf="data.ess_tipo!='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                          nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Posponer"><span nz-icon
+                            [nzType]="'si:clear-periods'" style="color: #39618b;"></span></button>
+                        <button *ngIf="data.ess_tipo!='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                          nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Cancelar"><span nz-icon
+                            [nzType]="'si:vari'" style="color: #a42424;"></span></button>
+                        <button *ngIf="data.ess_tipo=='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                          nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Modificar"><span nz-icon
+                            [nzType]="'si:ideal'" style="color: #3f7585;"></span></button>
+                        <button *ngIf="data.ess_tipo=='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                          nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Visualizar"><span nz-icon
+                            [nzType]="'si:observer'" style="color: #847f40;"></span></button>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </nz-table>
+          </div>
+        </ng-container>
+      </nz-card>
+
+      <ng-template #tmpTopCard>
+        <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Agregar información"><span nz-icon
+            nzType="plus"></span> Nuevo</button>&nbsp;
+        <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Agregar información"><span nz-icon
+            nzType="plus"></span> segundo</button>&nbsp;
+        <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Agregar información"><span nz-icon
+            nzType="plus"></span> segundo</button>&nbsp;
+        <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Agregar información"><span nz-icon
+            nzType="plus"></span> segundo</button>
+      </ng-template>
+
+      <!-- <nz-dropdown-menu #menu2="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="ellipsis"></span> Terminar</a>
+          </li>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="edit"></span> Posponer</a>
+          </li>
+          <li nz-menu-item>
+            <a style="color: red;"><span nz-icon nzType="eye"></span> Cancelar</a>
+          </li>
+
+          <li nz-menu-item>
+            <a><span nz-icon nzType="eye"></span> Modificar</a>
+          </li>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="folder"></span> Visualizar</a>
+          </li>
+        </ul>
+      </nz-dropdown-menu> -->
+
+
+
+
+
+
+      <!-- <div class="cat-top">
+        <div>
+          <button nz-button nzType="primary" nzGhost><i nz-icon [nzType]="'si:plus'"></i> Crear actividad</button>
+        </div>
+        <div>
+          <nz-form-label>Todos los usuarios</nz-form-label>
+          <nz-switch nzSize="small" (click)="changeListActies()" [(ngModel)]="filterAct"></nz-switch>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <small>{{listOfData.length}} Regs.</small>
+          <nz-input-group [nzSuffix]="suffixIconSearchAct">
+            <input type="text" #searchText nz-input placeholder="buscar" Green
+              (keyup)="searchActies(searchText.value)" />
+          </nz-input-group>
+        </div>
+      </div>
+
+      <nz-card-tab>
+        <nz-tabset nzSize="large" [(nzSelectedIndex)]="indexTab">
+          <nz-tab nzTitle="Pendientes"></nz-tab>
+          <nz-tab nzTitle="Realizadas"></nz-tab>
+          <nz-tab nzTitle="Histórico"></nz-tab>
+        </nz-tabset>
+      </nz-card-tab>
+
+      <ng-container *ngIf="indexTab==0">
+        <div class="cat-table">
+          <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" [nzNoResult]="'No hay resultados que mostrar'"
+            [nzLoading]="listOfData.length===0" [nzScroll]="{y: '70vh'}" [nzFrontPagination]="'false'"
+            [nzShowPagination]="'false'">
+            <thead>
+              <tr>
+                <th nzWidth="20px">Titulo</th>
+                <th nzWidth="95px">Descripción</th>
+                <th nzWidth="40px">Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let data of basicTable.data">
+                <tr>
+                  <td [nzEllipsis]>{{ data.ess_titu }}</td>
+                  <td>{{ data.ess_desc }}</td>
+                  <td>{{ data.fecha }}
+                    <div class="tool-buttons">
+                      <button class="btnHidde" nz-button nzType="text" nz-dropdown [nzDropdownMenu]="menu2"
+                        [nzClickHide]="true" nz-tooltip nzTooltipTitle="Editar" nzTooltipPlacement="bottomLeft"><i
+                          nz-icon [nzType]="'si:more'" style="color: #3b8fd4;"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </nz-table>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="indexTab==1">REalizadas</ng-container>
+      <ng-container *ngIf="indexTab==2">historico</ng-container>
+
+
+      <ng-template #suffixIconSearchAct>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+
+      <nz-dropdown-menu #menu2="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="ellipsis"></span> Terminar</a>
+          </li>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="edit"></span> Posponer</a>
+          </li>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="eye"></span> Cancelar</a>
+          </li>
+
+          <li nz-menu-item>
+            <a><span nz-icon nzType="eye"></span> Modificar</a>
+          </li>
+          <li nz-menu-item>
+            <a><span nz-icon nzType="folder"></span> Visualizar</a>
+          </li>
+        </ul>
+      </nz-dropdown-menu> -->
+
+
+
+      <!-- <nz-table #basicTable [nzSize]="'small'" [nzData]="activities" [nzFrontPagination]="false"
+        [nzShowPagination]="false" [nzScroll]="{y: '42.5vh' }" nzNoResult="Sin datos a mostrar">
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Descrip.</th>
+            <th>Fecha</th>
+            <th>Aviso</th>
+            <th>options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td [nzEllipsis]>{{ data.ess_titu }}</td>
+            <td>{{ data.ess_desc }}</td>
+            <td>{{ data.fecha }}</td>
+            <td [nzEllipsis]>{{ data.aviso }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </nz-table> -->
+    </div>
+  </div>
+</div>

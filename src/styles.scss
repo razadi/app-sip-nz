@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/ng-zorro-antd.css";
 @import "~ng-zorro-antd/ng-zorro-antd.aliyun.css";
 
 @import "theme.scss";
@@ -39,9 +39,10 @@ html {
     top: 2px;
     right: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #ffffff;
+    height: 90%;
   }
   .btnHidde {
     display: none;
@@ -53,6 +54,7 @@ html {
       // z-index: 99999;
       .btnHidde {
         display: block;
+        margin-left: 5px;
       }
     }
   }
@@ -307,36 +309,36 @@ html {
   border-radius: 8px;
 }
 
-.sip_back{
+.sip_back {
   width: 100%;
   height: 100%;
 
-  background-image: url('./assets/images/back.png'), url('./assets/images/logo.png');
+  background-image: url("./assets/images/back.png"),
+    url("./assets/images/logo.png");
   background-repeat: no-repeat, no-repeat;
   background-position: top left, top 80px right 8px;
   background-size: 100% 100%, 338px 164px;
-
 }
 
 .sip_title {
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #293A4E;
+  color: #293a4e;
 }
 
-.sip_subtitle{
+.sip_subtitle {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #47C6E6;
+  color: #47c6e6;
 }
 
-.sip_content{
+.sip_content {
   display: flex;
   height: 100%;
   width: 100%;
 }
 
-.sip_subcontent{
+.sip_subcontent {
   margin: auto;
 }
