@@ -4,6 +4,7 @@
 @import "~ng-zorro-antd/ng-zorro-antd.aliyun.css";
 
 @import "theme.scss";
+
 html {
   margin: 0;
   padding: 0;
@@ -340,3 +341,42 @@ html {
 .sip_subcontent{
   margin: auto;
 }
+
+// *********************************
+
+// .sip-card{
+//   border-radius: 15px;
+//   -webkit-box-shadow: 0px 4px 14px -11px #000000; 
+//   box-shadow: 0px 4px 14px -11px #000000;
+// }
+
+
+
+.sip-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+// /* Efecto al pasar el ratón sobre la tarjeta /
+// .card:hover {
+//  / Aumentar la elevación al pasar el ratón */
+// }
+// /* Estilos de contenido dentro de la tarjeta /
+// .card-content {
+// padding: 16px; / Espaciado interno */
+// }
+// /* Títulos dentro de la card /
+// .card-title {
+// font-size: 1.5rem; / Tamaño de fuente para el título /
+// margin: 0 0 8px 0; / Margen debajo del título */
+// }
+// /* Texto descriptivo dentro de la card /
+// .card-description {
+// font-size: 1rem; / Tamaño de fuente para la descripción /
+// color: #666; / Color del texto de la descripción */
+// }

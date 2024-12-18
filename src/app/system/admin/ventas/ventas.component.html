@@ -1,5 +1,4 @@
 <div class="var-top">
-
 </div>
 
 <div>
@@ -10,11 +9,11 @@
         <div nz-row [nzGutter]="8">
           <div nz-col [nzSpan]="6" *ngFor="let item of ventas">
             <nz-list-item>
-              <nz-card [nzTitle]="item.est_name" [ngClass]="{'iniciada': item.est_etap=='INI',
-                                                             'desarrollo': item.est_etap=='DES',
-                                                             'cerrada': item.est_etap=='CER',
-                                                             'perdida': item.est_etap=='PER',
-                                                             'cancelada': item.est_etap=='CAN'}">
+              <nz-card class="sip-card" [nzTitle]="item.est_name" [ngClass]="{'iniciada': item.est_etap=='INI',
+                                                                              'desarrollo': item.est_etap=='DES',
+                                                                              'cerrada': item.est_etap=='CER',
+                                                                              'perdida': item.est_etap=='PER',
+                                                                              'cancelada': item.est_etap=='CAN'}">
                 <p>{{item.est_etap}}</p>
                 <div style="height: 100px; overflow: auto;">{{item.est_meta}}</div>
               </nz-card>
@@ -25,6 +24,8 @@
 
       <!-- <div style="background-color: red; height: 200px;"></div> -->
     </div>
+
+
     <div nz-col class="gutter-row1" [nzSpan]="8">
       <!-- <div style="background-color: green; height: 200px;"></div> -->
 
