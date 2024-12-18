@@ -45,8 +45,7 @@ export class SystemComponent implements OnInit {
     });
 
     this.menus = await this.passportService.getMenu(this.user.usu_nive, this.cia.emp_id);
-    console.log(this.menus);
-    
+        
     const accesos = await this.passportService.getAcceso(this.user.usu_logi);
     this.passportService.setAcceso(accesos);
   }

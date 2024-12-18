@@ -8,7 +8,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ComponentsModule } from '../shared/components/components.module';
 import { DirectivesModule } from '../shared/directives/directives.module';
 import { NzmoduleModule } from '../shared/nzmodule/nzmodule.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedPipesModule } from '../shared';
 
 
 @NgModule({
@@ -18,12 +19,16 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SystemRoutingModule,
     TranslateModule,
     SharedModule,
     ComponentsModule,
     DirectivesModule,
     NzmoduleModule,
+    SharedPipesModule,    
+  ],
+  entryComponents: [
     
   ]
 })

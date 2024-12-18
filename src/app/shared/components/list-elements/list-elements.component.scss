@@ -1,0 +1,25 @@
+.list-content {
+    width: 35vw;
+    height: 100%;
+    overflow: auto;
+    background-color: #fffdfd;
+    p {
+        display: flex;
+        margin: 1px;
+        .number {
+            font-weight: bold;
+            display: block;
+            padding: 0 3px;
+            width: 25px;
+            text-align: end;
+        }
+        .content {
+            display: block;
+            width: 33vw;
+            padding-left: 5px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+}

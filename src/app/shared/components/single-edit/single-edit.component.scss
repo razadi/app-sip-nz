@@ -1,0 +1,14 @@
+.card-edit {
+    position: relative;
+    height: 100%;
+    background: #c2c2c288;
+    // padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    nz-card {
+        background-color: #ffffff;
+        border-radius: 5px;
+        width: 95%;
+    }
+}

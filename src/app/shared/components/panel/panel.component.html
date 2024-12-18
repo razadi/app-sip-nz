@@ -1,0 +1,10 @@
+<div class="panel">
+    <div class="panel-title" [ngClass]="{'azul': color==='azul', 'verde': color==='verde', 'amarillo': color==='amarillo', 'rojo': color==='rojo'}">
+
+        <span>{{title}}</span>
+        <nz-badge *ngIf="cuenta>0" [nzCount]="cuenta" nzStandalone [nzStyle]="{ backgroundColor: '#fff', color: '#0a0a0a', boxShadow: '0 0 0 2px #d9d9d9 inset' }"></nz-badge>
+    </div>
+    <div class="panel-body">
+        <ng-content #panel></ng-content>
+    </div>
+</div>

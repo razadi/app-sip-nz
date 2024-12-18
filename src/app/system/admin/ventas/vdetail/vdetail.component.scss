@@ -1,0 +1,82 @@
+.vdetail-group {
+  padding: 10px;
+  border: #d8d4d4 solid 1px;
+  border-radius: 5px;
+
+  &-title {
+    margin-top: -21px;
+    background-color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    &-85 {
+      width: 85px;
+    }
+    &-50 {
+      width: 50px;
+    }
+  }
+
+  &-negocia {
+    height: 160px;
+    margin-bottom: 20px;
+  }
+
+  &-cliente {
+    height: 195px;
+    margin-bottom: 20px;
+  }
+
+  &-info {
+    height: 220px;
+    margin-bottom: 20px;
+  }
+
+  &-vende {
+    height: 50px;
+  }
+}
+
+.vdetail-divide {
+  display: block;
+  height: 10px;
+}
+
+.vdetail-caption {
+  display: block;
+  color: #a0a0a0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin: 4px 0 -3px 5px;
+}
+
+.vdetail-texto {
+  display: block;
+  width: 100%;
+  padding: 2px 5px;
+  border-radius: 5px;
+  // border: #d6d6d6 1px solid;
+  &:hover {
+    background-color: #f7fafa;
+    border: #d6d6d6 1px solid;
+  }
+}
+
+.vdetail-table {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.text-marged {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.memo {
+  height: 85px;
+  overflow: auto;
+  &-2 {
+    height: 170px;
+  }
+}

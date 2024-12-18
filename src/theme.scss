@@ -1,4 +1,90 @@
-$primary-color: #47C6E6;
+$primary-color: #47c6e6;
 :root {
-    --nz-primary-color: $primary-color;
+  --nz-primary-color: $primary-color;
+}
+
+.pendiente {
+  color: #293a4e;
+  &-act {
+    background-color: #feffe6;
+  }
+  &-com {
+    background-color: #f9eee0;
+  }
+  &-tar {
+    background-color: #feffcf;
+  }
+}
+.cancelada {
+  color: #293a4e;
+  &-act {
+    background-color: #febcb9;
+  }
+  &-com {
+    background-color: #fdd8d5;
+  }
+  &-tar {
+    background-color: #fecccb;
+  }
+}
+.terminado {
+  color: #293a4e;
+  &-act {
+    background-color: #ffecfb;
+  }
+  &-com {
+    background-color: #fee0ff;
+  }
+  &-tar {
+    background-color: #ffcefd;
+  }
+}
+.posponer {
+  color: #293a4e;
+  &-act {
+    background-color: #ecf4fa;
+  }
+  &-com {
+    background-color: #d9e8f8;
+  }
+  &-tar {
+    background-color: #bcd8f3;
+  }
+}
+.perdido {
+  color: #293a4e;
+  &-act {
+    background-color: #ece0eb;
+  }
+  &-com {
+    background-color: #ede2ec;
+  }
+  &-tar {
+    background-color: #dfdcdf;
+  }
+}
+
+.iniciada {
+  background-color: #ccfec7;
+  color: #293a4e;
+}
+
+.desarrollo {
+  background-color: #c9c9e5;
+  color: #293a4e;
+}
+
+.cerrada {
+  background-color: #d3e6f8;
+  color: #293a4e;
+}
+
+.perdida {
+  background-color: #ffc7ad;
+  color: #293a4e;
+}
+
+.cancelada {
+  background-color: #f19999;
+  color: #293a4e;
 }

@@ -11,15 +11,37 @@ export class IEstrategia {
   etapa?: string;
 }
 
+export class IEstSeguir {
+  est_id?: number;
+  emp_id?: number;
+  ese_id?: number;
+  ese_meta?: string;
+  ese_feca?: string;
+}
+
 export class ICliente {
   cli_cve?: string;
   cli_rfc?: string;
-  cli_raso?: string;  
+  cli_raso?: string; 
+  cli_site?: string; 
+  cli_cont?: string;
+  cli_movi?: string;
+  cli_mail?: string;
+  cli_dire?: string;
+  cli_next?: string;
+  cli_nint?: string;
+  cli_colo?: string;
+  cli_dele?: string;
+  cli_copo?: string;
+  cli_pais?: string;
+  cli_enfe?: string;
+  cli_domi?: string;
 }
 
 export class IVendedor{
   ved_cve?: string;
   ved_raso?: string;
+  ved_rfc?: string;
 }
 
 export class IActividad {

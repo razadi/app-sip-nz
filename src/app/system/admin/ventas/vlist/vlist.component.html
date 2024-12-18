@@ -1,0 +1,120 @@
+<div class="var-top">
+
+</div>
+
+<div>
+  <div nz-row [nzGutter]="[8, 8]">
+    <div nz-col class="gutter-row1" [nzSpan]="16" style="height: 85vh; overflow: auto;">
+
+      <nz-list nzGrid>
+        <div nz-row [nzGutter]="8">
+          <div nz-col [nzSpan]="6" *ngFor="let item of ventas">
+            <nz-list-item>
+              <nz-card class="venta-card" [nzTitle]="item.est_name" [ngClass]="{'iniciada': item.est_etap=='INI',
+                                                             'desarrollo': item.est_etap=='DES',
+                                                             'cerrada': item.est_etap=='CER',
+                                                             'perdida': item.est_etap=='PER',
+                                                             'cancelada': item.est_etap=='CAN'}"
+                [nzActions]="[actionEdit, actionSetting, actionEllipsis]">
+                <!-- (click)="verVenta(item.est_id)"> -->
+                <!-- <p>{{item.est_etap}}</p> -->
+                <div class="venta-card-info">{{item.est_meta}}</div>
+                <div class="venta-card-fecha">{{item.est_feca | date: 'MMM d, y, h:mm a'}}</div>
+                <div class="venta-card-subtitle">{{item.cli_raso}}</div>
+                <div class="venta-card-subtitle">{{item.ved_raso}}</div>
+              </nz-card>
+            </nz-list-item>
+            <!-- *** -->
+            <ng-template #cardTitle>
+              <div style="padding: 0;">{{item.est_name}}</div>
+            </ng-template>
+
+            <ng-template #actionSetting>
+              <i nz-icon nzType="setting"></i>
+            </ng-template>
+            <ng-template #actionEdit>
+              <i nz-icon nzType="edit"></i>
+            </ng-template>
+            <ng-template #actionEllipsis>
+              <i nz-icon nzType="ellipsis"></i>
+            </ng-template>
+            <!-- *** -->
+          </div>
+        </div>
+      </nz-list>
+
+      <!-- <div style="background-color: red; height: 200px;"></div> -->
+    </div>
+    <div nz-col class="gutter-row1" [nzSpan]="8">
+      <!-- <div style="background-color: green; height: 200px;"></div> -->
+      <div class="cat-table">
+        <nz-table #basicTable [nzSize]="'small'" [nzData]="activities" [nzFrontPagination]="false"
+          [nzShowPagination]="false" [nzScroll]="{y: '43vh' }" nzNoResult="Sin datos a mostrar">
+          <thead>
+            <tr>
+              <th nzWidth="25px">Titulo</th>
+              <th nzWidth="95px">Descripción</th>
+              <th nzWidth="25px">Hora</th>
+              <th nzWidth="5px"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let data of basicTable.data">
+              <tr class="venta-table"
+                [ngClass]="{'pendiente-act': data.ess_tipo=='ACTI' && data.ess_esta=='P', 'posponer-act': data.ess_tipo=='ACTI' && data.ess_esta=='S', 'perdido-act': data.ess_tipo=='ACTI' && data.ess_esta=='D'}">
+                <td [nzEllipsis]>{{ data.ess_titu }}</td>
+                <td>{{ data.ess_desc }}</td>
+                <td>{{ data.age_tima }}</td>
+                <td>
+                  <div class="tool-buttons">
+                    <button *ngIf="data.ess_tipo!='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                      nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Terminar"><span nz-icon
+                        [nzType]="'si:periods'" style="color: #579336;"></span></button>
+                    <button *ngIf="data.ess_tipo!='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                      nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Posponer"><span nz-icon
+                        [nzType]="'si:clear-periods'" style="color: #39618b;"></span></button>
+                    <button *ngIf="data.ess_tipo!='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                      nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Cancelar"><span nz-icon
+                        [nzType]="'si:vari'" style="color: #a42424;"></span></button>
+                    <button *ngIf="data.ess_tipo=='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                      nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Modificar"><span nz-icon
+                        [nzType]="'si:ideal'" style="color: #3f7585;"></span></button>
+                    <button *ngIf="data.ess_tipo=='COTI' && data.ess_esta=='P'" class="btnHidde" nz-button
+                      nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Visualizar"><span nz-icon
+                        [nzType]="'si:observer'" style="color: #847f40;"></span></button>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </nz-table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div nz-row>
+    <div nz-col [nzSpan]="24" class="var-top">
+      <div class="gutter-example">
+        <div nz-row [nzGutter]="[8, 8]">
+          <div nz-col class="gutter-row" [nzSpan]="15 / ventas.length" *ngFor="let ven of ventas">
+            <nz-card nzType="inner" nzTitle="Inner Card Title">
+              <a>Inner Card Content</a>
+            </nz-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- 
+  <div nz-row [nzGutter]="[8, 8]" [nzJustify]="'space-between'">
+    <div nz-col nzSpan="14" style="background-color: red;">
+      
+    </div>
+
+    <div nz-col nzSpan="8" style="height: 500px; overflow: auto;"></div>
+      
+  </div> -->

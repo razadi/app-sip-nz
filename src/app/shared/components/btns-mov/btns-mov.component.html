@@ -1,0 +1,8 @@
+<div class="btn-mov">
+  <button *ngIf="visible[0]" nz-button nzType="text" [nzSize]="'default'" nz-tooltip [nzTooltipTitle]="toolTip[0]"
+    (click)="sendBack()" [disabled]="disable[0]"><i nz-icon [nzType]="'si:return-to'"></i>{{captions[0]}}</button>
+  <button *ngIf="visible[1]" nz-button nzType="text" [nzSize]="'default'" nz-tooltip [nzTooltipTitle]="toolTip[1]"
+    (click)="sendReturn()" [disabled]="disable[1]">Regresar</button>
+  <button *ngIf="visible[2]" nz-button nzType="text" [nzSize]="'default'" nz-tooltip [nzTooltipTitle]="toolTip[2]"
+    (click)="sendNext()" [disabled]="disable[2]"><i nz-icon [nzType]="'si:avance-to'"></i>{{captions[2]}}</button>
+</div>

@@ -35,7 +35,6 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 
-
 @NgModule({
   declarations: [],
   imports: [

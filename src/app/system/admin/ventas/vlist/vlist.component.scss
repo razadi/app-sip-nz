@@ -1,0 +1,28 @@
+.venta-card {
+  // height: 220px;
+  overflow: hidden;
+  // cursor: pointer;
+  &-info {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: -10px;
+    margin-bottom: 5px;
+  }
+  &-fecha {
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  &-subtitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+.venta-table {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
